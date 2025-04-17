@@ -35,7 +35,7 @@ scrape_configs:
     metrics_path: /probe
     params:
       module: [http_2xx]
-      target: ['https://vk.com/']
+      target: ['https://vk.ru/']
     file_sd_configs:
       - files: [ 'targets-pc.yml' ]
     relabel_configs:
@@ -46,7 +46,7 @@ scrape_configs:
     metrics_path: /probe
     params:
       module: [http_2xx]
-      target: ['https://ya.ru/']
+      target: ['https://yandex.ru/']
     file_sd_configs:
       - files: [ 'targets-pc.yml' ]
     relabel_configs:
