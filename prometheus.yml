@@ -1,0 +1,54 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+scrape_configs:
+  - job_name: 'windows_exporter'
+    metrics_path: /metrics
+    file_sd_configs:
+      - files: [ 'targets-pc-windows.yml' ]
+
+  - job_name: 'blackbox_instagram'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+      target: ['https://www.instagram.com/']
+    file_sd_configs:
+      - files: [ 'targets-pc.yml' ]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  - job_name: 'blackbox_facebook'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+      target: ['https://www.facebook.com/']
+    file_sd_configs:
+      - files: [ 'targets-pc.yml' ]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  - job_name: 'blackbox_vk'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+      target: ['https://vk.com/']
+    file_sd_configs:
+      - files: [ 'targets-pc.yml' ]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  - job_name: 'blackbox_ya'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+      target: ['https://ya.ru/']
+    file_sd_configs:
+      - files: [ 'targets-pc.yml' ]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance

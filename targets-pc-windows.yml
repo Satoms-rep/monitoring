@@ -1,0 +1,6 @@
+- labels: {}
+  targets:
+    - comp156.satoms.local:9182
+    - comp10.satoms.local:9182
+    - srv-1cdev.satoms.local:9182
+    - comp141.satoms.local:9182
