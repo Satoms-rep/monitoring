@@ -20,4 +20,51 @@ docker-compose down
 - Добавить адрес prometheus: http://prometheus:9090
 - Добавить дашборды: 10467, 14451, 14510, 14694, 10826, 10795
 
+### [main.yml](file:///c%3A/Dev/monitoring/.github/workflows/main.yml)
+
+Добавьте workflow для автоматического деплоя через SSH на сервер Ubuntu.  
+Файлы копируются через `scp` или делается `git clone`/`git pull` на сервере.  
+В вашем случае проще делать `git pull` на сервере, чтобы всегда были актуальные файлы.
+
+**Пример workflow:**
+
+````yaml
+name: Deploy to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
+
+      - name: Deploy via SSH
+        env:
+          HOST: ${{ secrets.HOST }}
+          USER: ${{ secrets.USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no $USER@$HOST '
+            set -e
+            if [ ! -d ~/monitoring ]; then
+              git clone git@github.com:Satoms-rep/monitoring.git ~/monitoring
+            else
+              cd ~/monitoring
+              git pull
+            fi
+            cd ~/monitoring
+            docker-compose pull
+            docker-compose up -d
+          '
+
 
