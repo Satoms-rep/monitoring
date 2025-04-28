@@ -42,13 +42,24 @@ scrape_configs:
       - source_labels: [__address__]
         target_label: instance
 
-  - job_name: 'blackbox_mail'
+  - job_name: 'blackbox_rambler'
     metrics_path: /probe
     params:
       module: [http_2xx]
-      target: ['https://mail.ru/']
+      target: ['https://rambler.ru']
     file_sd_configs:
       - files: [ 'targets-pc.yml' ]
     relabel_configs:
       - source_labels: [__address__]
+        target_label: instance
+
+  - job_name: 'blackbox_habr'
+    metrics_path: /probe
+    params:
+      module: [ http_2xx ]
+      target: [ 'https://habr.com/' ]
+    file_sd_configs:
+      - files: [ 'targets-pc.yml' ]
+    relabel_configs:
+      - source_labels: [ __address__ ]
         target_label: instance
