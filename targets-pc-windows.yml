@@ -1,6 +1,6 @@
 - labels: {}
   targets:
-    - comp156.satoms.local:9182
+    - comp156.satoms.local:9183
     - comp10.satoms.local:9182
     - srv-1cdev.satoms.local:9182
     - comp141.satoms.local:9182
@@ -12,3 +12,7 @@
     - laptop19.satoms.local:9182
     - comp198.satoms.local:9182
     - comp52.satoms.local:9182
+    - comp8.satoms.local:9182
+    - comp118.satoms.local:9182
+    - comp144.satoms.local:9182
+    - comp147.satoms.local:9182
