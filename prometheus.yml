@@ -42,11 +42,11 @@ scrape_configs:
       - source_labels: [__address__]
         target_label: instance
 
-  - job_name: 'blackbox_ya'
+  - job_name: 'blackbox_mail'
     metrics_path: /probe
     params:
       module: [http_2xx]
-      target: ['https://yandex.ru/']
+      target: ['https://mail.ru/']
     file_sd_configs:
       - files: [ 'targets-pc.yml' ]
     relabel_configs:
