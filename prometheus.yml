@@ -63,3 +63,11 @@ scrape_configs:
     relabel_configs:
       - source_labels: [ __address__ ]
         target_label: instance
+
+  - job_name: 'nvidia_dcgm'
+    static_configs:
+      - targets: ['comp156.satoms.local:9400']
+    metrics_path: /metrics
+    scrape_interval: 1s
+    scrape_timeout: 1s
+
