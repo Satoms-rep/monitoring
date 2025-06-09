@@ -71,3 +71,25 @@ scrape_configs:
     scrape_interval: 1s
     scrape_timeout: 1s
 
+  - job_name: 'node_exporter_virt_server'
+    static_configs:
+      - targets:
+        - 192.168.120.13:9100
+        - 192.168.121.165:9100
+
+  - job_name: 'node_exporter_phisic_server'
+    static_configs:
+      - targets: []
+
+  - job_name: 'mikrotik'
+    static_configs:
+      - targets: []
+
+  - job_name: 'hpe'
+    static_configs:
+      - targets: []
+
+  - job_name: 'tp_link'
+    static_configs:
+      - targets: []
+
