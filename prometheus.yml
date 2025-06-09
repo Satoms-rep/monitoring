@@ -9,68 +9,6 @@ scrape_configs:
     file_sd_configs:
       - files: [ 'targets-pc-windows.yml' ]
 
-  - job_name: 'blackbox_instagram'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-      target: ['https://www.instagram.com/']
-    file_sd_configs:
-      - files: [ 'targets-pc.yml' ]
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-
-  - job_name: 'blackbox_facebook'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-      target: ['https://www.facebook.com/']
-    file_sd_configs:
-      - files: [ 'targets-pc.yml' ]
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-
-  - job_name: 'blackbox_vk'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-      target: ['https://vk.ru/']
-    file_sd_configs:
-      - files: [ 'targets-pc.yml' ]
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-
-  - job_name: 'blackbox_rambler'
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
-      target: ['https://rambler.ru']
-    file_sd_configs:
-      - files: [ 'targets-pc.yml' ]
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-
-  - job_name: 'blackbox_habr'
-    metrics_path: /probe
-    params:
-      module: [ http_2xx ]
-      target: [ 'https://habr.com/' ]
-    file_sd_configs:
-      - files: [ 'targets-pc.yml' ]
-    relabel_configs:
-      - source_labels: [ __address__ ]
-        target_label: instance
-
-  - job_name: 'nvidia_dcgm'
-    static_configs:
-      - targets: ['comp156.satoms.local:9400']
-    metrics_path: /metrics
-    scrape_interval: 1s
-    scrape_timeout: 1s
-
   - job_name: 'node_exporter_virt_server'
     static_configs:
       - targets:
@@ -79,6 +17,15 @@ scrape_configs:
         - comp156.satoms.local:9100
 
   - job_name: 'node_exporter_phisic_server'
+    static_configs:
+      - targets: []
+
+  - job_name: 'windows_exporter_virt_server'
+    static_configs:
+      - targets:
+          - srv-1cdev.satoms.local:9182
+
+  - job_name: 'windows_exporter_phisic_server'
     static_configs:
       - targets: []
 
