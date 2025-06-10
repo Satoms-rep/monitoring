@@ -28,6 +28,7 @@ scrape_configs:
           - srv-1c01.satoms.local:9182
           - srv-mssql01.satoms.local:9182
           - srv-ps.satoms.local:9182
+          -
 
   - job_name: 'windows_exporter_phisic_server'
     static_configs:
