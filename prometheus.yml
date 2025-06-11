@@ -47,3 +47,6 @@ scrape_configs:
     static_configs:
       - targets: []
 
+  - job_name: 'mktxp'
+    static_configs:
+      - targets: ['- comp156.satoms.local:49090']
