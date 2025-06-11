@@ -37,7 +37,8 @@ scrape_configs:
 
   - job_name: 'mikrotik'
     static_configs:
-      - targets: []
+      - targets:
+          - comp156.satoms.local:49090
 
   - job_name: 'hpe'
     static_configs:
@@ -46,7 +47,3 @@ scrape_configs:
   - job_name: 'tp_link'
     static_configs:
       - targets: []
-
-  - job_name: 'mktxp'
-    static_configs:
-      - targets: ['- comp156.satoms.local:49090']
