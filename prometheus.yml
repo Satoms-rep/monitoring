@@ -14,17 +14,12 @@ scrape_configs:
       - targets:
         - 192.168.121.212:9100
 
-  - job_name: 'node_exporter_phisic_server'
-    static_configs:
-      - targets: []
-
+  
   - job_name: 'windows_exporter_virt_server'
     static_configs:
       - targets:
           - srv-kaspersky.satoms.local:9182
           - srv-ps.satoms.local:9182
-          - olimp-srv.satoms.local:9182
-          - srv-print-server.satoms.local:9182
 
   - job_name: 'windows_exporter_phisic_server'
     static_configs:
