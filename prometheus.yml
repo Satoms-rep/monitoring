@@ -22,7 +22,6 @@ scrape_configs:
     static_configs:
       - targets:
           - srv-kaspersky.satoms.local:9182
-          - srv-1c01.satoms.local:9182
           - srv-ps.satoms.local:9182
           - olimp-srv.satoms.local:9182
           - srv-print-server.satoms.local:9182
@@ -38,6 +37,7 @@ scrape_configs:
           - srv-1c02.satoms.local:9182
           - srv-1cWeb.satoms.local:9182
           - srv-1c-lic0.satoms.local:9182
+          - srv-1c01.satoms.local:9182
 
   - job_name: 'ASCON_virt_server'
     static_configs:
